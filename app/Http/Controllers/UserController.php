@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +37,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $user = new user([
+            'name'=>$request->get('name'),
+            'email'=>$request->get('email'),
+            'gender'=>$request->get('gender'),
+            'address'=>$request->get('address'),
+            'mobile'=>$request->get('mobile'),
+            'role'=>$request->get('role'),
+            'password'=>$request->get('password'),
+        ]);
+        
+        $user -> save();
+        return redirect('/');
     }
 
     /**
